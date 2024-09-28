@@ -3,15 +3,15 @@ import java.util.ArrayList;
 
 public class User {
     private String name;
-    private String subscription;
+    private Subscription subType;
     private Cart cart;
     private ArrayList<Order> orders;
     private Addressable shippingAddress;
     private Addressable billingAddress;
 
-    public User(String name, String subscription) {
+    public User(String name, Subscription type) {
         this.name = name;
-        this.subscription = subscription;  // normal, gold, platinum, silver membership
+        this.subType = type; // normal, gold, platinum, silver membership
         this.cart = new Cart();
         this.orders = new ArrayList<>();
     }
@@ -20,12 +20,12 @@ public class User {
         return name;
     }
 
-    public String getSubscription() {
-        return subscription;
+    public Subscription getSubscription() {
+        return subType;
     }
 
-    public void setSubscription(String role) {
-        this.subscription = role;
+    public void setSubscription(Subscription newType) {
+        this.subType = newType;
     }
 
     public void viewCart() {
@@ -60,19 +60,23 @@ public class User {
     }
 
     public void checkout() {
-        Order order = new Order(cart, this.subscription);
-        order.setShippingAddress(shippingAddress.getStreetAddress(), shippingAddress.getApartmentNumber(),
-                shippingAddress.getCity(), shippingAddress.getState(), shippingAddress.getZipCode(),
+        Order order = new Order(cart, this.subType);
+
+        order.setShippingAddress(shippingAddress.getStreetAddress(),
+                shippingAddress.getApartmentNumber(),
+                shippingAddress.getCity(), shippingAddress.getState(),
+                shippingAddress.getZipCode(),
                 shippingAddress.getCountry());
 
-        order.setBillingAddress(billingAddress.getStreetAddress(), billingAddress.getApartmentNumber(),
-                billingAddress.getCity(), billingAddress.getState(), billingAddress.getZipCode(),
+        order.setBillingAddress(billingAddress.getStreetAddress(),
+                billingAddress.getApartmentNumber(),
+                billingAddress.getCity(), billingAddress.getState(),
+                billingAddress.getZipCode(),
                 billingAddress.getCountry());
+
         order.setOrderStatus("Order Placed");
         order.setDateCreated("2024-01-01");
         order.setUserName(this.name);
         orders.add(order);
     }
 }
-
-

@@ -6,7 +6,8 @@ public class Address implements Addressable {
     private String zipCode;
     private String country;
 
-    public Address(String streetAddress, String apartmentNumber, String city, String state, String zipCode, String country) {
+    public Address(String streetAddress, String apartmentNumber, String city, String state, String zipCode,
+            String country) {
         this.streetAddress = streetAddress;
         this.apartmentNumber = apartmentNumber;
         this.city = city;

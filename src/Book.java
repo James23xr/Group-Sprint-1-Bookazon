@@ -60,19 +60,8 @@ public class Book {
         System.out.println("Price: $" + price);
     }
 
-    public boolean isPriceValid() {
-        return price > 0;
-    }
-
-    public boolean isTitleValid() {
-        return title != null && !title.isEmpty();
-    }
-
-    public boolean isAuthorValid() {
-        return author != null && !author.isEmpty();
-    }
-
-    public boolean isYearPublishedValid() {
-        return yearPublished > 0;
+    public boolean isValid(){
+        BookValidator validator = new BookValidator(price, title, author, yearPublished);
+        return validator.isValid();
     }
 }
