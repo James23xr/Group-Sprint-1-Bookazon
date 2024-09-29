@@ -1,21 +1,20 @@
-public class Book implements Item {
+public class Ebook implements Item {
+
     private String title;
     private String author;
     private int yearPublished;
     private double price;
-    private boolean isPaperback; // true if the book is paperback, false if it is hardcover
 
-    public Book(String title, String author, int yearPublished, double price, boolean isPaperback) {
+    public Ebook(String title, String author, int yearPublished, double price) {
         this.title = title;
         this.author = author;
         this.yearPublished = yearPublished;
         this.price = price;
-        this.isPaperback = isPaperback;
     }
 
     @Override
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     @Override
@@ -25,7 +24,7 @@ public class Book implements Item {
 
     @Override
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
     @Override
@@ -35,30 +34,12 @@ public class Book implements Item {
 
     @Override
     public int getYearPublished() {
-        return yearPublished;
+        return this.yearPublished;
     }
 
     @Override
     public void setYearPublished(int yearPublished) {
         this.yearPublished = yearPublished;
-    }
-
-    @Override
-    public double getPrice() {
-        return price;
-    }
-
-    @Override
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public boolean isPaperback() {
-        return isPaperback;
-    }
-
-    public void setPaperback(boolean isPaperback) {
-        this.isPaperback = isPaperback;
     }
 
     @Override
@@ -69,8 +50,13 @@ public class Book implements Item {
         System.out.println("Price: $" + price);
     }
 
-    public boolean isValid() {
-        BookValidator validator = new BookValidator(price, title, author, yearPublished);
-        return validator.isValid();
+    @Override
+    public double getPrice() {
+        return this.price;
     }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
 }

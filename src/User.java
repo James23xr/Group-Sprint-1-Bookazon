@@ -40,13 +40,13 @@ public class User {
         this.billingAddress = billingAddress;
     }
 
-    public void addToCart(Book book, int quantity) {
-        cart.addItem(new CartItem(book.getTitle(), book.getPrice(), quantity));
+    public void addToCart(Item item, int quantity) {
+        cart.addItem(new CartItem(item.getTitle(), item.getPrice(), quantity));
     }
 
-    public void removeFromCart(Book book) {
+    public void removeFromCart(Item remove) {
         for (CartItem item : cart.getItems()) {
-            if (item.getName().equals(book.getTitle())) {
+            if (item.getName().equals(remove.getTitle())) {
                 cart.getItems().remove(item);
                 break;
             }
