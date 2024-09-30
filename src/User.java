@@ -76,6 +76,7 @@ public class User {
 
         order.setOrderStatus("Order Placed");
         order.setDateCreated("2024-01-01");
+        order.setDateShipped("2024-02-02");
         order.setUserName(this.name);
         orders.add(order);
     }
